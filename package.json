@@ -1,0 +1,28 @@
+{
+  "name": "palmtale-resume",
+  "version": "1.0.0",
+  "description": "Individal resume @palmtale",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github/palmtale/resume"
+  },
+  "keywords": ["palmtale","resume"],
+  "author": "Palmtale",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.4.0",
+    "body-parser": "^1.15.0",
+    "koa": "^1.2.0",
+    "koa-handlebars": "^0.5.0",
+    "log4js": "^0.6.36"
+  },
+  "devDependencies": {
+    "mocha": "^2.5.3",
+    "istanbul": "0.4.4",
+    "should": "^9.0.2"
+  }
+}
