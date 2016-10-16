@@ -1,23 +1,14 @@
 
 'use strict';
 
-var path = require('path'),
-    log4js = require('log4js'),
-    KOA = require('koa'),
-    koahbs  = require('koa-handlebars'),
+/**
+ *  The fake entry file.
+ */
 
-//Init app
-var koa = KOA();
-
-//Config app
-log4js.configure(app.config.log4js, { cwd: app.config.log4js.cwd });
-
-koa.use(log4js.connectLogger(log4js.getLogger("http"), { level: 'auto' }));
-koa.use(routers);
-koa.use(Express.static(path.join(__dirname, 'public')));
-
-koa.engine('.hbs', exphbs({defaultLayout: "default", extname: ".hbs"}));
-koa.set('view engine', '.hbs');
-
-//Start app
-koa.listen(process.env.PORT || 5000);
+var http = require("http");
+var server = http.createServer(function(req, res) {
+    res.writeHeader(200, {'Content-Type': 'text/plain;charset=utf-8'});
+    res.end("Hello, Welcome to Node.js world.");
+});
+var port = process.env.APP_PORT || 5000;
+server.listen(port);

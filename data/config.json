@@ -1,0 +1,43 @@
+{
+  "databases": {
+    "redis": {
+      "host": "127.0.0.1",
+      "port": 6379,
+      "password": "redis",
+      "db": 0
+    }
+  },
+  "log4js": {
+    "cwd": "data/log",
+    "appenders": [
+      {
+        "category": "http",
+        "type": "dateFile",
+        "filename": "http.log",
+        "pattern": "-yyyy-MM-dd",
+        "alwaysIncludePattern": false
+      },
+      {
+        "category": "resume",
+        "type": "dateFile",
+        "filename": "resume.log",
+        "pattern": "-yyyy-MM-dd",
+        "alwaysIncludePattern": false
+      },
+      {
+        "category": "resume-db",
+        "type": "dateFile",
+        "filename": "resume-db.log",
+        "pattern": "-yyyy-MM-dd",
+        "alwaysIncludePattern": false
+      },
+      {
+        "category": "resume-script",
+        "type": "dateFile",
+        "filename": "resuem-script.log",
+        "pattern": "-yyyy-MM-dd",
+        "alwaysIncludePattern": false
+      }
+    ]
+  }
+}
