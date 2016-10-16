@@ -4,7 +4,7 @@ var fs = require('fs'),
     uglify = require('gulp-uglify');
 
 gulp.task('default', ['server', 'client'], function() {
-    // 将你的默认的任务代码放在这
+
 });
 
 var subFolders = function (base) {
@@ -31,5 +31,7 @@ gulp.task('hbs', function () {
 });
 
 gulp.task('client', function () {
-    
+    var clientDir = 'src/client';
+    return gulp.src(subFolders(clientDir), {base: clientDir})
+        .pipe(gulp.dest('dest/public'));
 });
