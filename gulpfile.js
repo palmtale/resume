@@ -63,12 +63,15 @@ gulp.task('client', ['lib'], function () {
  */
 gulp.task('lib', function () {
     var clientDir = 'src/client';
-    var installTask =  gulp.src(clientDir + "/package.json")
-        .pipe(install());
-    installTask.on('end', function () {
+    gulp.task('lib:install', function () {
+        return gulp.src(clientDir + "/package.json")
+            .pipe(install());
+    });
+    gulp.task('lib:move', ['lib:install'], function () {
         return gulp.src(subFolders(clientDir + "/node_modules/bootstrap/dist"), {base: clientDir + "/node_modules/bootstrap/dist"})
             .pipe(gulp.dest('dest/public/lib/bootstrap'));
     });
+    return gulp.start('lib:move');
 });
 /**
  * Docker build
