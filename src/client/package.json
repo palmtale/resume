@@ -1,0 +1,32 @@
+{
+  "name": "@palmtale/resume.client",
+  "version": "1.0.0",
+  "description": "Individal resume @palmtale Client module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/palmtale/resume/src/client"
+  },
+  "keywords": ["palmtale", "resume"],
+  "author": "Palmtale",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "bootstrap": "3.3.7",
+    "font-awesome": "4.6.3",
+    "hover.css": "2.0.2",
+    "imagesloaded": "4.1.1",
+    "isotope-layout": "3.0.1",
+    "@mizchi/jquery-pjax": "1.9.6",
+    "jquery-circle-progress": "1.2.0",
+    "jquery.counterup": "2.0.5",
+    "magnific-popup": "1.1.0",
+    "owl.carousel": "2.1.4",
+    "pjax": "0.2.4",
+    "waypoints": "4.0.1",
+    "wow": "0.0.6"
+  }
+}
