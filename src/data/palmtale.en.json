@@ -1,0 +1,15 @@
+{
+  "alias":"Palm Tale",
+  "firstName": "Cartoon",
+  "lastName": "Daemon",
+  "gender": "Male",
+  "age": "28",
+  "birth": "1988-08-03",
+  "slogan": "",
+  "email": "",
+
+  "track": [{"name": "Pinlai Media Co.Ltd", "type": "CompanyWork", "description": "", "department":"", "title": "", "position":"", "start": "", "end": "" },
+            {"name": "Dalian Lian University of Technology", "type": "SchoolStudy", "description": "", "major": "", "":""}, {},{},{}],
+  "portfolio":[{}],
+  "ability" : [{}]
+}

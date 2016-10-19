@@ -16,6 +16,7 @@
   "dependencies": {
     "gulp": "3.9.1",
     "gulp-uglify": "2.0.0",
+    "gulp-filter": "4.0.0",
     "gulp-install": "0.6.0",
     "gulp-docker": "0.0.12"
   },

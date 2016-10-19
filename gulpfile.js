@@ -3,6 +3,7 @@ var fs = require('fs'),
     path = require('path'),
     gulp = require('gulp'),
     uglify = require('gulp-uglify'),
+    filter = require('gulp-filter'),
     install = require('gulp-install'),
     Docker = require('gulp-docker');
 
@@ -68,8 +69,13 @@ gulp.task('lib', function () {
             .pipe(install());
     });
     gulp.task('lib:move', ['lib:install'], function () {
-        return gulp.src(subFolders(clientDir + "/node_modules/bootstrap/dist"), {base: clientDir + "/node_modules/bootstrap/dist"})
-            .pipe(gulp.dest('dest/public/lib/bootstrap'));
+        var nodeModuleDir = clientDir + "/node_modules/";
+        return Object.keys(libKeysDir).forEach(function (key) {
+            var path = libKeysDir[key];
+            return gulp.src(subFolders(nodeModuleDir + path), {base: nodeModuleDir + path})
+                /*.pipe(filter(["!.npmignore", "!bower.json", "!package.json", "README.md"]))*/
+                .pipe(gulp.dest('dest/public/lib/' + key));
+        });
     });
     return gulp.start('lib:move');
 });
@@ -91,3 +97,6 @@ gulp.task('docker', ['server', 'client'], function () {
         .pipe(gulp.dest('dest'))
         .pipe(docker.build());
 });
+
+
+var libKeysDir = {"jquery": "jquery/dist", "bootstrap": "bootstrap/dist", "font-awesome": "font-awesome"};
