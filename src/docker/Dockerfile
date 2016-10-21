@@ -1,6 +1,6 @@
-#++++++++++++++++++++++++++++++++++++++
-# Resume Docker container
-#++++++++++++++++++++++++++++++++++++++
+#+++++++++++++++++++++++++#
+# Resume Docker container #
+#+++++++++++++++++++++++++#
 
 FROM soglad/node:6.8.1-alpine
 LABEL vendor=Palmtale
@@ -10,11 +10,13 @@ ENV APP_HOME=/usr/local/app \
     APP_PORT=5000 \
     APP_ENV=production
 
-COPY docker-entry /usr/local/bin/
-RUN chmod u+x /usr/local/bin/docker-entry
+COPY * /usr/local/app
+RUN mv /usr/local/app/entry /usr/local/bin/ \
+    && chmod u+x /usr/local/bin/entry \
+    && rm -rf /usr/local/app/Dockerfile /usr/local/app/Dockerfile
 
-VOLUME $APP_HOME $APP_HOME/data
+VOLUME $APP_HOME/data
 EXPOSE $APP_PORT
 WORKDIR $APP_HOME
-ENTRYPOINT ["docker-entry"]
+ENTRYPOINT ["entry"]
 CMD ["node", "."]

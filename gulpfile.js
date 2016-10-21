@@ -85,17 +85,14 @@ gulp.task('lib', function () {
 gulp.task('docker', ['server', 'client'], function () {
     var docker = new Docker(gulp,{
         sidekick: {
-            build: "bin/build",
-            run:   "bin/sidekick",
-            env:   { ENV: "production" },
-            git:   "git@github.com:winton/sidekick.git#release",
-            repo:  "quay.io/winton/sidekick"
+            name:"resume-palmtale",
+            tags:["palmtale/resume"]
         }
     });
     var dockerDir = 'src/docker';
     return gulp.src(subFolders(dockerDir), {base: dockerDir})
         .pipe(gulp.dest('dest'))
-        .pipe(docker.build());
+        .pipe(gulp.start('docker:image'));
 });
 
 
