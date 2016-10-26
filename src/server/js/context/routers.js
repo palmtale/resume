@@ -8,46 +8,53 @@
 /**
  * Module import as order: system, third-party, local
  */
-var koaRoute = require('koa-power-router');
+require('babel-polyfill');
+var koaRoute = require('koa-router')();
 
 /**
  * Pre-config on imported modules
  */
-koaRoute.get(['/', '/summary'], function *() {
-    yield this.render('summary', {
-        'title': '',
-        'subTitle': '',
-    });
+koaRoute.get('/', async (ctx, next) => {
+    ctx.state = {
+        title: 'Palmtale',
+        subTitle: 'Summary'
+    };
+    await ctx.render('summary', {});
 });
-koaRoute.get('/track', function *() {
-    yield this.render('track', {
-        'title': '',
-        'subTitle': '',
-    });
+koaRoute.get('/track', async (ctx, next) => {
+    ctx.state = {
+        title: 'Palmtale',
+        subTitle: 'Summary'
+    };
+    await ctx.render('track', {});
 });
-koaRoute.get('/idea', function *() {
-    yield this.render('idea', {
-        'title': '',
-        'subTitle': '',
-    });
+koaRoute.get('/idea', async (ctx, next) => {
+    ctx.state = {
+        title: 'Palmtale',
+        subTitle: 'Summary'
+    };
+    await ctx.render('idea', {});
 });
-koaRoute.get('/contact', function *() {
-    yield this.render('contact', {
-        'title': '',
-        'subTitle': '',
-    });
+koaRoute.get('/contact', async (ctx, next) => {
+    ctx.state = {
+        title: 'Palmtale',
+        subTitle: 'Summary'
+    };
+    await ctx.render('contact', {});
 });
-koaRoute.get('/portfolio', function *() {
-    yield this.render('summary', {
-        'title': '',
-        'subTitle': '',
-    });
+koaRoute.get('/portfolio', async (ctx, next) => {
+    ctx.state = {
+        title: 'Palmtale',
+        subTitle: 'Summary'
+    };
+    await ctx.render('portfolio', {});
 });
-koaRoute.get('/ability', function *() {
-    yield this.render('ability', {
-        'title': '',
-        'subTitle': '',
-    });
+koaRoute.get('/ability', async (ctx, next) => {
+    ctx.state = {
+        title: 'Palmtale',
+        subTitle: 'Summary'
+    };
+    await ctx.render('ability', {});
 });
 /**
  * Local Module Define.

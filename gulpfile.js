@@ -2,10 +2,11 @@
 var fs = require('fs'),
     path = require('path'),
     gulp = require('gulp'),
+    babel = require('gulp-babel'),
     uglify = require('gulp-uglify'),
     filter = require('gulp-filter'),
     install = require('gulp-install'),
-    Docker = require('gulp-docker');
+    Docker = require('gulp-docker-tasks');
 
 gulp.task('default', ['server', 'client', 'docker'], function() {
 
@@ -26,6 +27,7 @@ var subFolders = function (base) {
 gulp.task('server', [ 'dep', 'hbs', 'data'], function () {
     var jsDir = 'src/server/js';
     return gulp.src(subFolders(jsDir), {base: jsDir})
+        .pipe(babel({presets: ['es2015', 'stage-3']}))
         /*.pipe(uglify())*/
         .pipe(gulp.dest('./dest'));
 });
@@ -82,18 +84,27 @@ gulp.task('lib', function () {
 /**
  * Docker build
  */
-gulp.task('docker', ['server', 'client'], function () {
-    var docker = new Docker(gulp,{
-        sidekick: {
-            name:"resume-palmtale",
-            tags:["palmtale/resume"]
-        }
-    });
-    var dockerDir = 'src/docker';
-    return gulp.src(subFolders(dockerDir), {base: dockerDir})
-        .pipe(gulp.dest('dest'))
-        .pipe(gulp.start('docker:image'));
-});
+// gulp.task('docker', ['server', 'client'], function () {
+//     var docker = new Docker(gulp,{
+//         sidekick: {
+//             name:"resume-palmtale",
+//             repo:"docker.io/palmtale/resume",
+//             tags:["latest","1.0.0"],
+//             dockerfile: 'dest'
+//         }
+//     });
+//     var dockerDir = 'src/docker';
+//     return gulp.src(subFolders(dockerDir), {base: dockerDir})
+//         .pipe(gulp.dest('dest'))
+//         .pipe(gulp.start('docker:image'));
+// });
 
+// gulp.task('docker', [], function () {
+//     var docker = new Docker();
+//     var dockerDir = 'src/docker';
+//     return gulp.src(subFolders(dockerDir), {base: dockerDir})
+//        .pipe(gulp.dest('dest'))
+//        .pipe(docker.build());
+// });
 
 var libKeysDir = {"jquery": "jquery/dist", "bootstrap": "bootstrap/dist", "font-awesome": "font-awesome"};

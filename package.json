@@ -15,10 +15,13 @@
   "license": "MIT",
   "dependencies": {
     "gulp": "3.9.1",
+    "gulp-babel": "6.1.2",
     "gulp-uglify": "2.0.0",
     "gulp-filter": "4.0.0",
     "gulp-install": "0.6.0",
-    "gulp-docker": "0.0.12"
+    "gulp-docker": "0.0.12",
+    "babel-preset-es2015": "6.9.0",
+    "babel-preset-stage-3": "6.17.0"
   },
   "devDependencies": {
     "mocha": "^2.5.3",
